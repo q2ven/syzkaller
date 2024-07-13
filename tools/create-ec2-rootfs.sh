@@ -138,9 +138,12 @@ EOF
 
 rm /etc/resolv.conf
 
-sed -i -e 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' \
-     -e 's/#PermitEmptyPasswords no/PermitEmptyPasswords yes/' \
-     /etc/ssh/sshd_config
+cat << EOF > /etc/ssh/sshd_config
+PasswordAuthentication yes
+PermitRootLogin yes
+PermitEmptyPasswords yes
+Subsystem sftp /usr/libexec/openssh/sftp-server
+EOF
 
 passwd -d root
 "
