@@ -28,7 +28,7 @@
 #   ssh -o StrictHostKeyChecking=no -p 10022 root@localhost
 #
 
-set -eux
+set -eu
 
 NAME="rootfs.ext4"
 FORMAT="ext4"
